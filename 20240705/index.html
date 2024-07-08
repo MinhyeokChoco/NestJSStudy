@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <label for="">이름</label>
+    <input type="text" name="name" id="nameInput">
+    <label for="">가격</label>
+    <input type="text" name="price" id="priceInput">
+    <button class="submitBtn create">생성</button>
+    <button class="submitBtn view">조회</button>
+    <button class="submitBtn update">수정</button>
+    <button class="submitBtn delete">삭제</button>
+</body>
+<script>
+    const btns = document.querySelectorAll(".submitBtn");
+    btns.forEach((e) => {
+        e.onclick = async (event) => {
+            switch (event.target.classList[1]) {
+                case "create":
+                    axios.post("http://127.0.0.1:3000/shop/create", {
+                        name: nameInput.value,
+                        price: priceInput.value
+                    })
+                    break;
+                case "view":
+                    const data = await axios.get("http://127.0.0.1:3000/shop");
+                    console.log(data);
+                    break;
+                case "update":
+                    axios.put("http://127.0.0.1:3000/shop/0", {
+                        name: nameInput.value,
+                        price: priceInput.value
+                    });
+                    break;
+                case "delete":
+                    await axios.delete(`http://127.0.0.1:3000/shop/0`);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    })
+</script>
+
+</html>

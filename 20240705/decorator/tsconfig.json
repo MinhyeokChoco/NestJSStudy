@@ -1,0 +1,14 @@
+{
+  "include": [
+    "src/**/*"
+  ],
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true, // 정확한 type 검사 (엄격 모드)
+    "outDir": "./dist",
+    "esModuleInterop": true, // 라이브러리 esModule 타입을 지정할 지
+    "experimentalDecorators": true, // 데코레이터 기능을 사용하겠다.
+    "emitDecoratorMetadata": true // 데코레이터 사용, 메타데이터 생성
+  }
+}
