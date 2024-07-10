@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post, Render, Res } from '@nestjs/common';
 import { ShopService } from './shop.service';
-import { CreatePost, UpdatePost } from './dto/shop.dto';
+import { CreatePost, DeletePost, UpdatePost } from './dto/shop.dto';
 import { Response } from 'express';
 
 @Controller('shop')
@@ -25,11 +25,24 @@ export class ShopController {
     return { data }
   }
 
-  @Get("/update:id")
-  @Post('update')
+  @Get("/update/:id")
+  @Render('update')
+  async updatePage(@Param("id") id: string) {
+    const data = await this.shopService.findOne(id);
+    return { data };
+  }
+
+  @Post("/update/:id")
   async update(@Body() updateShopDTO: UpdatePost, @Param("id") id: string, @Res() res: Response) {
     const data = await this.shopService.update(updateShopDTO);
-    res.redirect(`/update/${id}`)
+    res.redirect(`/shop/${id}`)
+    return { data }
+  }
+
+  @Get("/delete/:id")
+  async destory(@Param("id") deleteShopDTO: DeletePost, id: string) {
+    const data = await this.shopService.destory(deleteShopDTO);
+    console.log(data);
     return { data }
   }
 }

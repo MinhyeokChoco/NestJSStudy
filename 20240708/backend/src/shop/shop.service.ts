@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Shop } from './model/shop.model';
-import { CreatePost, UpdatePost } from './dto/shop.dto';
+import { CreatePost, DeletePost, UpdatePost } from './dto/shop.dto';
 
 @Injectable()
 export class ShopService {
@@ -23,5 +23,10 @@ export class ShopService {
         return this.shopModel.update({
             name, price
         }, { where: { id } })
+    }
+
+    async destory(deleteShopDto: DeletePost) {
+        const { id } = deleteShopDto
+        return this.shopModel.destroy({ where: { id } })
     }
 }

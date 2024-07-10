@@ -8,9 +8,11 @@
 </head>
 
 <body>
-    <%= data.name %>
-        <%= data.price %>
-            <a href=""></a>
+    <%= data.id %>
+        <%= data.name %>
+            <%= data.price %>
+                <button type="button" onclick='location.href="/shop/update/<%= data.id %>"'>수정</button>
+                <button type="button" onclick='location.href="/shop/delete/<%= data.id %>"'>삭제</button>
 </body>
 
 </html>

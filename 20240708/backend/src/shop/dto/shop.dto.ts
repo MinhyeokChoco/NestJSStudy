@@ -8,3 +8,7 @@ export class UpdatePost {
     name: string
     price: number
 }
+
+export class DeletePost {
+    id: string
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수정 페이지</title>
+</head>
+
+<body>
+    <form method="post">
+        <%= data.name %>
+            <%= data.price %>
+                <input type="text" name="id" value="<%= data.id %>" hidden>
+                <label for="">이름</label>
+                <input type="text" name="name">
+                <label for="">가격</label>
+                <input type="text" name="price">
+                <button>수정</button>
+    </form>
+
+</body>
+
+</html>
